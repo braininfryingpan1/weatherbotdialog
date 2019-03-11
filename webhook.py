@@ -25,7 +25,7 @@ def webhook():
 
 def processrequest(req):
     result = req.get("result")
-    print(result)
+    print("result",result)
     parameters = result.get("parameters")
     city = parameters.get("geo-city")
     date = parameters.get("date")
