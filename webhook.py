@@ -24,7 +24,7 @@ def webhook():
     return r
 
 def processrequest(req):
-    result = req.get("result")
+    result = req.get("queryResult")
     print("result",result)
     parameters = result.get("parameters")
     city = parameters.get("geo-city")
