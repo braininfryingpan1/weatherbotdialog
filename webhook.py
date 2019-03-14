@@ -40,7 +40,7 @@ def processrequest(req):
             break
     speech = "The forecast for"+city+ "for "+date+" is "+"cloudy skies"
     return {
-    "speech": speech,
+    "fulfillmentText": speech,
     "displayText": speech,
     "source": "apiai-weather-webhook"
     }
