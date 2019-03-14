@@ -41,8 +41,15 @@ def processrequest(req):
     speech = "The forecast for"+city+ "for "+date+" is "+"cloudy skies"
     return {
     "fulfillmentText": speech,
-    "displayText": speech,
-    "source": "apiai-weather-webhook"
+        "fulfillmentMessages": [
+            {
+                "text": {
+                    "text": [
+                        speech
+                    ]
+                }
+            }
+        ]
     }
 
 if __name__ == '__main__':
