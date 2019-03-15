@@ -25,32 +25,48 @@ def webhook():
 
 def processrequest(req):
     result = req.get("queryResult")
-    print("result",result)
-    parameters = result.get("parameters")
-    city = parameters.get("geo-city")
-    date = parameters.get("date")
-    if city is None:
-        return None
-    r=requests.get('http://api.openweathermap.org/data/2.5/forecast?q='+city+'&appid=06f070197b1f60e55231f8c46658d077')
-    json_object = r.json()
-    weather=json_object['list']
-    for i in range(0,30):
-        if date in weather[i]['dt_txt']:
-            condition= weather[i]['weather'][0]['description']
-            break
-    speech = "The forecast for"+city+ "for "+date+" is "+"cloudy skies"
+    print("result", result)
     return {
-    "fulfillmentText": speech,
+    "fulfillmentText": "Great Your special will be delivered in 40 minutes",
         "fulfillmentMessages": [
             {
                 "text": {
                     "text": [
-                        speech
+                        "Great Your special will be delivered in 40 minutes"
                     ]
                 }
             }
         ]
     }
+
+
+    # result = req.get("queryResult")
+    # print("result",result)
+    # parameters = result.get("parameters")
+    # city = parameters.get("geo-city")
+    # date = parameters.get("date")
+    # if city is None:
+    #     return None
+    # r=requests.get('http://api.openweathermap.org/data/2.5/forecast?q='+city+'&appid=06f070197b1f60e55231f8c46658d077')
+    # json_object = r.json()
+    # weather=json_object['list']
+    # for i in range(0,30):
+    #     if date in weather[i]['dt_txt']:
+    #         condition= weather[i]['weather'][0]['description']
+    #         break
+    # speech = "The forecast for"+city+ "for "+date+" is "+"cloudy skies"
+    # return {
+    # "fulfillmentText": speech,
+    #     "fulfillmentMessages": [
+    #         {
+    #             "text": {
+    #                 "text": [
+    #                     speech
+    #                 ]
+    #             }
+    #         }
+    #     ]
+    # }
 
 if __name__ == '__main__':
     port = int(os.getenv('PORT', 5000))
