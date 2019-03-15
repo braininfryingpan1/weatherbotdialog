@@ -27,9 +27,13 @@ def processrequest(req):
     result = req.get("queryResult")
     print("result", result)
     address_context = result.get("outputContexts")
+    print("address_context",address_context)
     parameters = address_context.get("parameters")
+    print("parameters", parameters)
     location_original = parameters.get("location.original")
+    print("location_original", location_original)
     address_line2_original = parameters.get("address_line2.original")
+    print("address_line2_original", address_line2_original)
    # postal_code = parameters.get("'postal_code'")
 
 
