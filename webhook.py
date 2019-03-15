@@ -26,13 +26,22 @@ def webhook():
 def processrequest(req):
     result = req.get("queryResult")
     print("result", result)
+    address_context = result.get("outputContexts")
+    parameters = result.get("parameters")
+    location_original = parameters.get("location.original")
+    address_line2_original = parameters.get("address_line2.original")
+    postal_code = parameters.get("'postal_code'")
+
+
+
+
     return {
-    "fulfillmentText": "Great Your special will be delivered in 40 minutes",
+    "fulfillmentText": "Great Your special will be delivered to" +location_original + address_line2_original + "in 40 minutes",
         "fulfillmentMessages": [
             {
                 "text": {
                     "text": [
-                        "Great Your special will be delivered in 40 minutes"
+                        "Great Your special will be delivered to" +location_original + address_line2_original + "in 40 minutes"
                     ]
                 }
             }
