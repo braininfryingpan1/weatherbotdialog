@@ -46,6 +46,11 @@ def processrequest(req):
     drink = parameters.get("drink")
     print("drink", drink)
 
+    if drink is None and drink.len>0:
+        drink=drink
+    else:
+        drink= "no drink"
+
 
 
     location_line1 = parameters.get("location_line1")
@@ -64,16 +69,16 @@ def processrequest(req):
 
 
     return {
-    "fulfillmentText": "Great Your order of a "+ pizza_base+ " "+pizza_size  + " pizza with" + pizza_toppings +" pizza_toppings"+
-                        " and an order of "+drink+
+    "fulfillmentText": "Great Your order of a "+ pizza_size +" size pizza with "+pizza_base+ " base "  + " and " + pizza_toppings +" toppings"+
+                        " with an order of "+drink+
                        "will be delivered to" +street_address + "in 40 minutes",
         "fulfillmentMessages": [
             {
                 "text": {
                     "text": [
-                        "Great Your order of a "+ pizza_base+ " "+pizza_size  + " pizza with" + pizza_toppings +" pizza_toppings"+
-                        " and an order of "+drink+
-                       " will be delivered to " +street_address + " in 40 minutes"
+                        "Great Your order of a "+ pizza_size +" size pizza with "+pizza_base+ " base "  + " and " + pizza_toppings +" toppings"+
+                        " with an order of "+drink+
+                       "will be delivered to" +street_address + "in 40 minutes"
                     ]
                 }
             }
