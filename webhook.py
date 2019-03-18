@@ -71,7 +71,9 @@ def processrequest(req):
             {
                 "text": {
                     "text": [
-                        "Great Your order will be delivered to" +street_address + "in 40 minutes"
+                        "Great Your order of a "+ pizza_base+ " "+pizza_size  + " pizza with" + pizza_toppings +" pizza_toppings"+
+                        " and an order of "+drink+
+                       " will be delivered to " +street_address + " in 40 minutes"
                     ]
                 }
             }
