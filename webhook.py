@@ -30,9 +30,27 @@ def processrequest(req):
     print("address_context",address_context)
     parameters = address_context[1].get("parameters")
     print("parameters", parameters)
+
+    pizza_base = parameters.get("pizza_base")
+    print("pizza_base", pizza_base)
+
+    pizza_toppings = parameters.get("pizza_toppings")
+    print("pizza_toppings", pizza_toppings)
+
+    pizza_size = parameters.get("pizza_size")
+    print("pizza_size", pizza_size)
+
+    address_line2 = parameters.get("address_line2.original")
+    print("address_line2", address_line2)
+
+    drink = parameters.get("drink")
+    print("drink", drink)
+
+
+
     location_line1 = parameters.get("location_line1")
     print("location_line1", location_line1)
-    street_address = parameters.get("location_line1.street-address")
+    street_address = location_line1.get("street-address")
     print("street_address", street_address)
    # postal_code = parameters.get("'postal_code'")
 
