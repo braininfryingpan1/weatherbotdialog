@@ -54,7 +54,7 @@ def processrequest(req):
     print("street_address", street_address)
    # postal_code = parameters.get("'postal_code'")
 
-    if pizza_toppings is none and pizza_toppings.len>0:
+    if pizza_toppings is None and pizza_toppings.len>0:
         pizza_toppings=pizza_toppings
     else:
         pizza_toppings= "no"
