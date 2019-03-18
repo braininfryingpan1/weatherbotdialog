@@ -54,16 +54,24 @@ def processrequest(req):
     print("street_address", street_address)
    # postal_code = parameters.get("'postal_code'")
 
+    if pizza_toppings!=null and pizza_toppings.len>0:
+        pizza_toppings=pizza_toppings
+    else:
+        pizza_toppings= "no"
+
+
 
 
 
     return {
-    "fulfillmentText": "Great Your special will be delivered to" +street_address + "in 40 minutes",
+    "fulfillmentText": "Great Your order of a "+ pizza_base+ " "+pizza_size  + " pizza with" + pizza_toppings +" pizza_toppings"+
+                        " and an order of "+drink+
+                       "will be delivered to" +street_address + "in 40 minutes",
         "fulfillmentMessages": [
             {
                 "text": {
                     "text": [
-                        "Great Your special will be delivered to" +street_address + "in 40 minutes"
+                        "Great Your order will be delivered to" +street_address + "in 40 minutes"
                     ]
                 }
             }
