@@ -28,24 +28,24 @@ def processrequest(req):
     print("result", result)
     address_context = result.get("outputContexts")
     print("address_context",address_context)
-    parameters = address_context.get("parameters")
+    parameters = address_context[1].get("parameters")
     print("parameters", parameters)
-    location_original = parameters.get("location.original")
-    print("location_original", location_original)
-    address_line2_original = parameters.get("address_line2.original")
-    print("address_line2_original", address_line2_original)
+    location_line1 = parameters.get("location_line1")
+    print("location_line1", location_line1)
+    street_address = parameters.get("location_line1.street-address")
+    print("street_address", street_address)
    # postal_code = parameters.get("'postal_code'")
 
 
 
 
     return {
-    "fulfillmentText": "Great Your special will be delivered to" +location_original + address_line2_original + "in 40 minutes",
+    "fulfillmentText": "Great Your special will be delivered to" +street_address + "in 40 minutes",
         "fulfillmentMessages": [
             {
                 "text": {
                     "text": [
-                        "Great Your special will be delivered to" +location_original + address_line2_original + "in 40 minutes"
+                        "Great Your special will be delivered to" +street_address + "in 40 minutes"
                     ]
                 }
             }
