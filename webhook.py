@@ -28,6 +28,9 @@ def processrequest(req):
     print("result", result)
     address_context = result.get("outputContexts")
     print("address_context",address_context)
+    context_name= address_context[0].get("name")
+    print("context_name", context_name)
+
     parameters = address_context[0].get("parameters")
     print("parameters", parameters)
     last_name = parameters.get("last-name")
@@ -49,6 +52,15 @@ def processrequest(req):
                         "As per our records "+given_name+", your order is left at the front desk "
                                                             "signed by Daniel at 7:40 pm"
                     ]
+                }
+            }
+        ],
+        "outputContexts": [
+            {
+                "name": context_name,
+                "lifespanCount": 0,
+                "parameters": {
+                    "given_name": given_name
                 }
             }
         ]
