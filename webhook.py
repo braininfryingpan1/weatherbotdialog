@@ -28,62 +28,84 @@ def processrequest(req):
     print("result", result)
     address_context = result.get("outputContexts")
     print("address_context",address_context)
-    parameters = address_context[1].get("parameters")
+    parameters = address_context[0].get("parameters")
     print("parameters", parameters)
-
-    pizza_base = parameters.get("pizza_base")
-    print("pizza_base", pizza_base)
-
-    pizza_toppings = parameters.get("pizza_toppings")
-    print("pizza_toppings", pizza_toppings)
-
-    pizza_size = parameters.get("pizza_size")
-    print("pizza_size", pizza_size)
-
-    address_line2 = parameters.get("address_line2.original")
-    print("address_line2", address_line2)
-
-    drink = parameters.get("drink")
-    print("drink", drink)
-
-    if drink is None and drink.len>0:
-        drink=drink
-    else:
-        drink= "no drink"
-
-
-
-    location_line1 = parameters.get("location_line1")
-    print("location_line1", location_line1)
-    street_address = location_line1.get("street-address")
-    print("street_address", street_address)
-   # postal_code = parameters.get("'postal_code'")
-
-    if pizza_toppings is None and pizza_toppings.len>0:
-        pizza_toppings=pizza_toppings
-    else:
-        pizza_toppings= "no"
-
-
-
-
+    last_name = parameters.get("last-name")
+    print("last_name", last_name)
+    last_name = parameters.get("last-name")
+    print("last_name", last_name)
+    given_name = parameters.get("given-name")
+    print("given_name", given_name)
+    email = parameters.get("email")
+    print("last_name", email)
 
     return {
-    "fulfillmentText": "Great Your order of a "+ pizza_size +" size pizza with "+pizza_base+ " base "  + " and " + pizza_toppings +" toppings"+
-                        " with an order of "+drink+
-                       "will be delivered to" +street_address + "in 40 minutes",
+        "fulfillmentText": "As per our records, Your is left at the front desk signed by Daniel at 7:40 pm",
         "fulfillmentMessages": [
             {
                 "text": {
                     "text": [
-                        "Great Your order of a "+ pizza_size +" size pizza with "+pizza_base+ " base "  + " and " + pizza_toppings +" toppings"+
-                        " with an order of "+drink+
-                       "will be delivered to" +street_address + "in 40 minutes"
+                        "As per our records, Your is left at the front desk signed by Daniel at 7:40 pm"
                     ]
                 }
             }
         ]
     }
+
+
+   #  pizza_base = parameters.get("pizza_base")
+   #  print("pizza_base", pizza_base)
+   #
+   #  pizza_toppings = parameters.get("pizza_toppings")
+   #  print("pizza_toppings", pizza_toppings)
+   #
+   #  pizza_size = parameters.get("pizza_size")
+   #  print("pizza_size", pizza_size)
+   #
+   #  address_line2 = parameters.get("address_line2.original")
+   #  print("address_line2", address_line2)
+   #
+   #  drink = parameters.get("drink")
+   #  print("drink", drink)
+   #
+   #  if drink is None and drink.len>0:
+   #      drink=drink
+   #  else:
+   #      drink= "no drink"
+   #
+   #
+   #
+   #  location_line1 = parameters.get("location_line1")
+   #  print("location_line1", location_line1)
+   #  street_address = location_line1.get("street-address")
+   #  print("street_address", street_address)
+   # # postal_code = parameters.get("'postal_code'")
+   #
+   #  if pizza_toppings is None and pizza_toppings.len>0:
+   #      pizza_toppings=pizza_toppings
+   #  else:
+   #      pizza_toppings= "no"
+
+
+
+
+
+    # return {
+    # "fulfillmentText": "Great Your order of a "+ pizza_size +" size pizza with "+pizza_base+ " base "  + " and " + pizza_toppings +" toppings"+
+    #                     " with an order of "+drink+
+    #                    "will be delivered to" +street_address + "in 40 minutes",
+    #     "fulfillmentMessages": [
+    #         {
+    #             "text": {
+    #                 "text": [
+    #                     "Great Your order of a "+ pizza_size +" size pizza with "+pizza_base+ " base "  + " and " + pizza_toppings +" toppings"+
+    #                     " with an order of "+drink+
+    #                    "will be delivered to" +street_address + "in 40 minutes"
+    #                 ]
+    #             }
+    #         }
+    #     ]
+    # }
 
 
     # result = req.get("queryResult")
