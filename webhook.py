@@ -40,12 +40,14 @@ def processrequest(req):
     print("last_name", email)
 
     return {
-        "fulfillmentText": "As per our records, Your is left at the front desk signed by Daniel at 7:40 pm",
+        "fulfillmentText": "As per our records "+given_name+", your order is left at the front desk "
+                                                            "signed by Daniel at 7:40 pm",
         "fulfillmentMessages": [
             {
                 "text": {
                     "text": [
-                        "As per our records, Your is left at the front desk signed by Daniel at 7:40 pm"
+                        "As per our records "+given_name+", your order is left at the front desk "
+                                                            "signed by Daniel at 7:40 pm"
                     ]
                 }
             }
