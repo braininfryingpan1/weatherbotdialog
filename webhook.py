@@ -69,6 +69,10 @@ def processrequest(req):
         }
     else:
         print(actionagent)
+        address_context = result.get("outputContexts")
+        print("address_context", address_context)
+        context_name = address_context[0].get("name")
+        print("context_name", context_name)
         return {
             "fulfillmentText": "I am sorry I couldn't help you. let me transfer you to our expert. Hold on!",
             "fulfillmentMessages": [
@@ -85,7 +89,6 @@ def processrequest(req):
                     "name": context_name,
                     "lifespanCount": 0,
                     "parameters": {
-                        "given_name": given_name
                     }
                 }
             ]
