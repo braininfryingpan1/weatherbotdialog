@@ -29,7 +29,7 @@ def processrequest(req):
     result = req.get("queryResult")
     print("result", result)
     actionagent = result.get("action")
-    if actionagent is None:
+    if actionagent != "transfer_to_agent":
         address_context = result.get("outputContexts")
         print("address_context", address_context)
         context_name = address_context[0].get("name")
