@@ -73,6 +73,9 @@ def processrequest(req):
         print("address_context", address_context)
         context_name = address_context[0].get("name")
         print("context_name", context_name)
+        webhook_url = "https://hooks.slack.com/services/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"
+        slack_msg = {'text':'User not able to redeem promo code!'}
+        requests.post(webhook_url,data=json.dumps(slack_msg))
         return {
             "fulfillmentText": "I am sorry I couldn't help you. let me transfer you to our expert. Hold on!",
             "fulfillmentMessages": [
