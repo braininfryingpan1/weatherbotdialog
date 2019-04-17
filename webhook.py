@@ -29,30 +29,24 @@ def processrequest(req):
     result = req.get("queryResult")
     print("result", result)
     actionagent = result.get("action")
-    if actionagent != "transfer_to_agent":
+    if actionagent == "missing_ingredients":
+        print(actionagent)
         address_context = result.get("outputContexts")
         print("address_context", address_context)
         context_name = address_context[0].get("name")
         print("context_name", context_name)
-        parameters = address_context[0].get("parameters")
-        print("parameters", parameters)
-        last_name = parameters.get("last-name")
-        print("last_name", last_name)
-        last_name = parameters.get("last-name")
-        print("last_name", last_name)
-        given_name = parameters.get("given-name")
-        print("given_name", given_name)
-        email = parameters.get("email")
-        print("last_name", email)
+        webhook_url = "https://hooks.slack.com/services/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"
+        slack_msg = {'text': 'User  is missing ingredient in his order!'}
+        requests.post(webhook_url, data=json.dumps(slack_msg))
         return {
-            "fulfillmentText": given_name + ", our records show that it was delivered at the front "
-                                            "desk signed by Daniel at 7:40 pm",
+            "fulfillmentText": "Okay I'm going to transfer you to one of our agents, I'm sorry I couldn't help! "
+                               "One moment please.",
             "fulfillmentMessages": [
                 {
                     "text": {
                         "text": [
-                            given_name + ", our records show that it was delivered at the front "
-                                            "desk signed by Daniel at 7:40 pm",
+                            "Okay I'm going to transfer you to one of our agents, I'm sorry I couldn't help! "
+                            "One moment please. "
                         ]
                     }
                 }
@@ -62,12 +56,11 @@ def processrequest(req):
                     "name": context_name,
                     "lifespanCount": 0,
                     "parameters": {
-                        "given_name": given_name
                     }
                 }
             ]
         }
-    else:
+    elif actionagent == "transfer_to_agent":
         print(actionagent)
         address_context = result.get("outputContexts")
         print("address_context", address_context)
@@ -94,6 +87,44 @@ def processrequest(req):
                     "name": context_name,
                     "lifespanCount": 0,
                     "parameters": {
+                    }
+                }
+            ]
+        }
+    else:
+        address_context = result.get("outputContexts")
+        print("address_context", address_context)
+        context_name = address_context[0].get("name")
+        print("context_name", context_name)
+        parameters = address_context[0].get("parameters")
+        print("parameters", parameters)
+        last_name = parameters.get("last-name")
+        print("last_name", last_name)
+        last_name = parameters.get("last-name")
+        print("last_name", last_name)
+        given_name = parameters.get("given-name")
+        print("given_name", given_name)
+        email = parameters.get("email")
+        print("last_name", email)
+        return {
+            "fulfillmentText": given_name + ", our records show that it was delivered at the front "
+                                            "desk signed by Daniel at 7:40 pm",
+            "fulfillmentMessages": [
+                {
+                    "text": {
+                        "text": [
+                            given_name + ", our records show that it was delivered at the front "
+                                         "desk signed by Daniel at 7:40 pm",
+                        ]
+                    }
+                }
+            ],
+            "outputContexts": [
+                {
+                    "name": context_name,
+                    "lifespanCount": 0,
+                    "parameters": {
+                        "given_name": given_name
                     }
                 }
             ]
