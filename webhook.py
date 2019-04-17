@@ -45,14 +45,14 @@ def processrequest(req):
         email = parameters.get("email")
         print("last_name", email)
         return {
-            "fulfillmentText": "As per our records " + given_name + ", your order is left at the front desk "
-                                                                    "signed by Daniel at 7:40 pm",
+            "fulfillmentText": given_name + ", our records show that it was delivered at the front "
+                                            "desk signed by Daniel at 7:40 pm",
             "fulfillmentMessages": [
                 {
                     "text": {
                         "text": [
-                            "As per our records " + given_name + ", your order is left at the front desk "
-                                                                 "signed by Daniel at 7:40 pm"
+                            given_name + ", our records show that it was delivered at the front "
+                                            "desk signed by Daniel at 7:40 pm",
                         ]
                     }
                 }
@@ -77,12 +77,14 @@ def processrequest(req):
         slack_msg = {'text':'User not able to redeem promo code!'}
         requests.post(webhook_url,data=json.dumps(slack_msg))
         return {
-            "fulfillmentText": "I am sorry I couldn't help you. let me transfer you to our expert. Hold on!",
+            "fulfillmentText": "Okay I'm going to transfer you to one of our agents, I'm sorry I couldn't help! "
+                               "One moment please.",
             "fulfillmentMessages": [
                 {
                     "text": {
                         "text": [
-                            "I am sorry I couldn't help you. let me transfer you to our expert. Hold on!"
+                            "Okay I'm going to transfer you to one of our agents, I'm sorry I couldn't help! "
+                            "One moment please. "
                         ]
                     }
                 }
