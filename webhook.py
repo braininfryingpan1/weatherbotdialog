@@ -108,13 +108,13 @@ def processrequest(req):
         print("last_name", email)
         return {
             "fulfillmentText": given_name + ", our records show that it was delivered at the front "
-                                            "desk signed by Daniel at 7:40 pm",
+                                            "desk signed by Daniel at 7:40 pm. Is there anything I can help you with?",
             "fulfillmentMessages": [
                 {
                     "text": {
                         "text": [
                             given_name + ", our records show that it was delivered at the front "
-                                         "desk signed by Daniel at 7:40 pm",
+                                         "desk signed by Daniel at 7:40 pm. Is there anything I can help you with?",
                         ]
                     }
                 }
